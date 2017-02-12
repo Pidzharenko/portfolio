@@ -12,7 +12,9 @@ global.$ = {
   gulp: require('gulp'),
   del: require('del'),
   browserSync: require('browser-sync').create(),
-  gp: require('gulp-load-plugins')()
+  gp: require('gulp-load-plugins')(),
+    spritesmith : require('gulp.spritesmith'),
+
 };
 
 $.path.task.forEach(function(taskPath) {
@@ -21,14 +23,19 @@ $.path.task.forEach(function(taskPath) {
 
 $.gulp.task('default', $.gulp.series(
   'clean',
+
   $.gulp.parallel(
     'sass',
     'pug',
     'js:foundation',
     'js:process',
     'copy:image',
-    'css:foundation',
-    'sprite:svg'
+
+      'css:foundation',
+    'sprite:svg',
+    'gulp:spritesmith'
+
+
   ),
   $.gulp.parallel(
     'watch',

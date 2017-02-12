@@ -5,4 +5,9 @@ module.exports = function() {
     return $.gulp.src('./source/images/**/*.*', { since: $.gulp.lastRun('copy:image') })
       .pipe($.gulp.dest($.config.root + '/assets/img'));
   });
+    module.exports = function() {
+        $.gulp.task('copy', function() {
+
+        })
+    };
 };
